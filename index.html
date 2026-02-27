@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Eltun Web Studio</title>
+  <style>
+    :root { --bg:#0b1020; --card:#121a33; --text:#eaf0ff; --muted:#b8c2e6; --acc:#6ea8fe; }
+    *{box-sizing:border-box} body{margin:0;font-family:Inter,system-ui,Segoe UI,Roboto,Arial,sans-serif;background:linear-gradient(180deg,#0b1020,#0f1730);color:var(--text)}
+    .wrap{max-width:980px;margin:0 auto;padding:32px 20px 60px}
+    .hero{padding:48px 0 20px}
+    h1{font-size:40px;line-height:1.15;margin:0 0 12px}
+    p{color:var(--muted);font-size:18px;line-height:1.6;margin:0 0 18px}
+    .btn{display:inline-block;background:var(--acc);color:#05102b;text-decoration:none;font-weight:700;padding:12px 18px;border-radius:10px}
+    .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px;margin-top:18px}
+    .card{background:var(--card);border:1px solid #24305b;border-radius:14px;padding:18px}
+    h2{margin:28px 0 10px;font-size:24px}
+    h3{margin:0 0 8px;font-size:18px}
+    ul{margin:8px 0 0 18px;color:var(--muted)}
+    li{margin:6px 0}
+    .demo{height:130px;border:1px dashed #3f518f;border-radius:10px;display:flex;align-items:center;justify-content:center;color:#9fb0e2;font-weight:600;background:#0f1730}
+    .footer{margin-top:24px;color:#9fb0e2;font-size:14px}
+  </style>
+</head>
+<body>
+  <main class="wrap">
+    <section class="hero">
+      <h1>Eltun Web Studio</h1>
+      <p>Fast, modern websites for small businesses.</p>
+      <a class="btn" href="#contact">Get a Free Homepage Mockup</a>
+    </section>
+
+    <section>
+      <h2>Services</h2>
+      <div class="grid">
+        <article class="card">
+          <h3>Landing Page</h3>
+          <p>1 page • mobile responsive • contact form</p>
+          <strong>$120</strong>
+        </article>
+        <article class="card">
+          <h3>Business Website</h3>
+          <p>Up to 5 pages • WhatsApp button • SEO basics</p>
+          <strong>$250</strong>
+        </article>
+        <article class="card">
+          <h3>Pro Website</h3>
+          <p>Up to 8 pages • integrations • speed optimization</p>
+          <strong>$450</strong>
+        </article>
+      </div>
+    </section>
+
+    <section>
+      <h2>Demo Projects</h2>
+      <div class="grid">
+        <article class="card">
+          <h3>Clinic Landing Page Concept</h3>
+          <div class="demo">Hero + Services + Doctor Profiles + Booking CTA</div>
+          <ul>
+            <li>Goal: increase appointment bookings</li>
+            <li>Core sections: treatments, trust badges, FAQ</li>
+            <li>Conversion element: sticky "Book Now" button</li>
+          </ul>
+        </article>
+        <article class="card">
+          <h3>Cafe Website Concept</h3>
+          <div class="demo">Menu Highlights + Gallery + Location + Reserve CTA</div>
+          <ul>
+            <li>Goal: drive reservations and walk-ins</li>
+            <li>Core sections: featured menu, testimonials, map</li>
+            <li>Conversion element: one-tap WhatsApp reservation</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <section>
+      <h2>Why work with me</h2>
+      <ul>
+        <li>First draft in 24 hours</li>
+        <li>Mobile-first design</li>
+        <li>Clear communication</li>
+        <li>2 revision rounds</li>
+      </ul>
+    </section>
+
+    <section id="contact">
+      <h2>Contact</h2>
+      <div class="card">
+        <p><strong>Telegram:</strong> @Jupiter20365</p>
+        <p><strong>Email:</strong> eltunrahimli@gmail.com</p>
+      </div>
+      <p class="footer">Available for new projects this week.</p>
+    </section>
+  </main>
+</body>
+</html>
