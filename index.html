@@ -169,6 +169,74 @@
       margin-top: 4px;
     }
 
+    /* ── Expandable service cards ── */
+    .service-card {
+      cursor: pointer;
+      position: relative;
+    }
+
+    .service-card .expand-hint {
+      display: inline-block;
+      margin-top: 12px;
+      font-size: 13px;
+      color: var(--acc);
+      opacity: 0.7;
+      transition: opacity 0.2s;
+    }
+
+    .service-card:hover .expand-hint { opacity: 1; }
+
+    .service-card.expanded .expand-hint { display: none; }
+
+    .service-details {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.4s ease, opacity 0.3s ease, margin 0.3s ease;
+      opacity: 0;
+      margin-top: 0;
+    }
+
+    .service-card.expanded .service-details {
+      max-height: 300px;
+      opacity: 1;
+      margin-top: 16px;
+    }
+
+    .service-details ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .service-details li {
+      position: relative;
+      padding-left: 20px;
+      color: var(--muted);
+      font-size: 14px;
+      margin-bottom: 8px;
+      line-height: 1.6;
+    }
+
+    .service-details li::before {
+      content: '✓';
+      position: absolute;
+      left: 0;
+      color: #6ee7a0;
+      font-weight: 700;
+      font-size: 13px;
+    }
+
+    .service-details .delivery {
+      margin-top: 12px;
+      padding-top: 12px;
+      border-top: 1px solid rgba(100, 140, 255, 0.1);
+      font-size: 13px;
+      color: var(--muted);
+    }
+
+    .service-details .delivery strong {
+      color: var(--text);
+    }
+
     /* ── Demo projects ── */
     .demo-panel {
       border-radius: 12px;
@@ -384,23 +452,59 @@
     <section class="reveal">
       <h2>Services</h2>
       <div class="grid">
-        <article class="card">
+        <article class="card service-card" onclick="this.classList.toggle('expanded')">
           <span class="card-icon">🚀</span>
           <h3>Landing Page</h3>
           <p>1 page · mobile responsive · contact form</p>
           <span class="price">$120</span>
+          <span class="expand-hint">Click for details ↓</span>
+          <div class="service-details">
+            <ul>
+              <li>Custom single-page design from scratch</li>
+              <li>Fully responsive on all devices</li>
+              <li>Working contact form with email delivery</li>
+              <li>Basic SEO meta tags included</li>
+              <li>Fast-loading, optimized code</li>
+            </ul>
+            <p class="delivery"><strong>Delivery:</strong> 1–2 business days · 2 revision rounds</p>
+          </div>
         </article>
-        <article class="card">
+        <article class="card service-card" onclick="this.classList.toggle('expanded')">
           <span class="card-icon">💼</span>
           <h3>Business Website</h3>
           <p>Up to 5 pages · WhatsApp button · SEO basics</p>
           <span class="price">$250</span>
+          <span class="expand-hint">Click for details ↓</span>
+          <div class="service-details">
+            <ul>
+              <li>Up to 5 custom-designed pages</li>
+              <li>WhatsApp click-to-chat button</li>
+              <li>SEO fundamentals (meta tags, sitemap, headings)</li>
+              <li>Google Maps integration</li>
+              <li>Image gallery or portfolio section</li>
+              <li>Social media links</li>
+            </ul>
+            <p class="delivery"><strong>Delivery:</strong> 3–4 business days · 2 revision rounds</p>
+          </div>
         </article>
-        <article class="card">
+        <article class="card service-card" onclick="this.classList.toggle('expanded')">
           <span class="card-icon">⚡</span>
           <h3>Pro Website</h3>
           <p>Up to 8 pages · integrations · speed optimization</p>
           <span class="price">$450</span>
+          <span class="expand-hint">Click for details ↓</span>
+          <div class="service-details">
+            <ul>
+              <li>Up to 8 custom-designed pages</li>
+              <li>Third-party integrations (booking, payments, chat)</li>
+              <li>Advanced speed optimization (90+ PageSpeed)</li>
+              <li>Animations and micro-interactions</li>
+              <li>Blog or news section setup</li>
+              <li>Analytics tracking (Google Analytics)</li>
+              <li>Priority support for 30 days after launch</li>
+            </ul>
+            <p class="delivery"><strong>Delivery:</strong> 5–7 business days · 2 revision rounds</p>
+          </div>
         </article>
       </div>
     </section>
