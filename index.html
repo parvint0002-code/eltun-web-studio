@@ -197,7 +197,7 @@
     }
 
     .service-card.expanded .service-details {
-      max-height: 300px;
+      max-height: 400px;
       opacity: 1;
       margin-top: 16px;
     }
@@ -235,6 +235,27 @@
 
     .service-details .delivery strong {
       color: var(--text);
+    }
+
+    .service-details .btn-sm {
+      display: inline-block;
+      margin-top: 14px;
+      padding: 10px 20px;
+      font-size: 13px;
+      font-family: 'Space Grotesk', 'Inter', sans-serif;
+      font-weight: 700;
+      background: linear-gradient(135deg, var(--acc), var(--acc2));
+      color: #050d1f;
+      text-decoration: none;
+      border-radius: 10px;
+      transition: transform 0.25s, box-shadow 0.25s;
+      box-shadow: 0 2px 12px var(--glow);
+      animation: none;
+    }
+
+    .service-details .btn-sm:hover {
+      transform: translateY(-2px) scale(1.03);
+      box-shadow: 0 6px 24px rgba(110, 168, 254, 0.35);
     }
 
     /* ── Demo projects ── */
@@ -467,6 +488,7 @@
               <li>Fast-loading, optimized code</li>
             </ul>
             <p class="delivery"><strong>Delivery:</strong> 1–2 business days · 2 revision rounds</p>
+            <a class="btn-sm" href="#contact" onclick="event.stopPropagation()">Contact Me →</a>
           </div>
         </article>
         <article class="card service-card" onclick="this.classList.toggle('expanded')">
@@ -485,6 +507,7 @@
               <li>Social media links</li>
             </ul>
             <p class="delivery"><strong>Delivery:</strong> 3–4 business days · 2 revision rounds</p>
+            <a class="btn-sm" href="#contact" onclick="event.stopPropagation()">Contact Me →</a>
           </div>
         </article>
         <article class="card service-card" onclick="this.classList.toggle('expanded')">
@@ -504,6 +527,7 @@
               <li>Priority support for 30 days after launch</li>
             </ul>
             <p class="delivery"><strong>Delivery:</strong> 5–7 business days · 2 revision rounds</p>
+            <a class="btn-sm" href="#contact" onclick="event.stopPropagation()">Contact Me →</a>
           </div>
         </article>
       </div>
@@ -514,14 +538,14 @@
       <h2>Demo Projects</h2>
       <div class="grid">
         <article class="card">
-          <h3>Clinic Landing Page</h3>
+          <h3>🏥 Clinic Landing Page</h3>
           <div class="demo-panel">
-            Hero · Services · Doctor Profiles · Booking CTA
+            Hero with trust signals · Service cards · Doctor profiles with credentials · Appointment booking CTA · Patient testimonials
           </div>
           <ul class="demo-list">
-            <li>Increase appointment bookings</li>
-            <li>Treatments, trust badges, FAQ sections</li>
-            <li>Sticky "Book Now" conversion button</li>
+            <li>Boost appointment bookings with clear CTAs</li>
+            <li>Treatments, trust badges, insurance logos, FAQ</li>
+            <li>Sticky "Book Now" button for instant conversions</li>
           </ul>
           <div class="tags">
             <span class="tag">Healthcare</span>
@@ -530,19 +554,51 @@
           </div>
         </article>
         <article class="card">
-          <h3>Cafe Website</h3>
+          <h3>☕ Cafe Website</h3>
           <div class="demo-panel">
-            Menu Highlights · Gallery · Location · Reserve CTA
+            Menu highlights with photos · Instagram-style gallery · Google Maps location · Reserve table CTA · Daily specials section
           </div>
           <ul class="demo-list">
-            <li>Drive reservations and walk-ins</li>
-            <li>Featured menu, testimonials, map</li>
-            <li>One-tap WhatsApp reservation</li>
+            <li>Drive reservations and foot traffic</li>
+            <li>Visual menu, customer reviews, embedded map</li>
+            <li>One-tap WhatsApp reservation button</li>
           </ul>
           <div class="tags">
             <span class="tag">Restaurant</span>
             <span class="tag">WhatsApp</span>
             <span class="tag">Gallery</span>
+          </div>
+        </article>
+        <article class="card">
+          <h3>💈 Barber Shop</h3>
+          <div class="demo-panel">
+            Service menu with pricing · Before/after gallery · Barber profiles · Online appointment booking · Loyalty program section
+          </div>
+          <ul class="demo-list">
+            <li>Online appointment booking to reduce no-shows</li>
+            <li>Service pricing, gallery, and barber bios</li>
+            <li>Walk-in availability and location map</li>
+          </ul>
+          <div class="tags">
+            <span class="tag">Salon</span>
+            <span class="tag">Appointments</span>
+            <span class="tag">Gallery</span>
+          </div>
+        </article>
+        <article class="card">
+          <h3>🏠 Real Estate</h3>
+          <div class="demo-panel">
+            Property listings with filters · Virtual tour embeds · Agent profiles · Contact form with inquiry type · Neighborhood guides
+          </div>
+          <ul class="demo-list">
+            <li>Property search with price and location filters</li>
+            <li>Virtual tour integration and photo galleries</li>
+            <li>One-click "Contact Agent" for fast inquiries</li>
+          </ul>
+          <div class="tags">
+            <span class="tag">Property</span>
+            <span class="tag">Listings</span>
+            <span class="tag">Virtual Tour</span>
           </div>
         </article>
       </div>
