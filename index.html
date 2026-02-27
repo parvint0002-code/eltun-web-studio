@@ -4,95 +4,509 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Eltun Web Studio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
   <style>
-    :root { --bg:#0b1020; --card:#121a33; --text:#eaf0ff; --muted:#b8c2e6; --acc:#6ea8fe; }
-    *{box-sizing:border-box} body{margin:0;font-family:Inter,system-ui,Segoe UI,Roboto,Arial,sans-serif;background:linear-gradient(180deg,#0b1020,#0f1730);color:var(--text)}
-    .wrap{max-width:980px;margin:0 auto;padding:32px 20px 60px}
-    .hero{padding:48px 0 20px}
-    h1{font-size:40px;line-height:1.15;margin:0 0 12px}
-    p{color:var(--muted);font-size:18px;line-height:1.6;margin:0 0 18px}
-    .btn{display:inline-block;background:var(--acc);color:#05102b;text-decoration:none;font-weight:700;padding:12px 18px;border-radius:10px}
-    .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px;margin-top:18px}
-    .card{background:var(--card);border:1px solid #24305b;border-radius:14px;padding:18px}
-    h2{margin:28px 0 10px;font-size:24px}
-    h3{margin:0 0 8px;font-size:18px}
-    ul{margin:8px 0 0 18px;color:var(--muted)}
-    li{margin:6px 0}
-    .demo{height:130px;border:1px dashed #3f518f;border-radius:10px;display:flex;align-items:center;justify-content:center;color:#9fb0e2;font-weight:600;background:#0f1730}
-    .footer{margin-top:24px;color:#9fb0e2;font-size:14px}
+    :root {
+      --bg: #060b18;
+      --bg2: #0a1128;
+      --card: rgba(15, 23, 52, 0.6);
+      --card-border: rgba(100, 140, 255, 0.12);
+      --text: #eaf0ff;
+      --muted: #8a96b8;
+      --acc: #6ea8fe;
+      --acc2: #a78bfa;
+      --glow: rgba(110, 168, 254, 0.25);
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Inter', system-ui, -apple-system, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      overflow-x: hidden;
+    }
+
+    /* ── Animated background ── */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 80% 50% at 50% -20%, rgba(110, 168, 254, 0.12), transparent),
+        radial-gradient(ellipse 60% 40% at 80% 60%, rgba(167, 139, 250, 0.08), transparent),
+        radial-gradient(ellipse 50% 50% at 20% 80%, rgba(110, 168, 254, 0.06), transparent);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .wrap {
+      position: relative;
+      z-index: 1;
+      max-width: 1020px;
+      margin: 0 auto;
+      padding: 0 24px 80px;
+    }
+
+    /* ── Typography ── */
+    h1, h2, h3 { font-family: 'Space Grotesk', 'Inter', sans-serif; }
+
+    h2 {
+      font-size: 28px;
+      font-weight: 700;
+      letter-spacing: -0.5px;
+      margin-bottom: 24px;
+      color: var(--text);
+    }
+
+    h3 {
+      font-size: 18px;
+      font-weight: 600;
+      margin-bottom: 8px;
+    }
+
+    p { color: var(--muted); font-size: 16px; line-height: 1.7; }
+
+    section { margin-top: 80px; }
+
+    /* ── Hero ── */
+    .hero {
+      padding: 100px 0 40px;
+      text-align: center;
+      margin-top: 0;
+    }
+
+    .hero h1 {
+      font-size: clamp(36px, 6vw, 60px);
+      font-weight: 700;
+      letter-spacing: -1.5px;
+      line-height: 1.1;
+      background: linear-gradient(135deg, #fff 0%, var(--acc) 50%, var(--acc2) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 16px;
+      animation: fadeInUp 0.8s ease-out both;
+    }
+
+    .hero .tagline {
+      font-size: clamp(17px, 2.5vw, 20px);
+      color: var(--muted);
+      max-width: 520px;
+      margin: 0 auto 32px;
+      animation: fadeInUp 0.8s ease-out 0.15s both;
+    }
+
+    .hero .btn {
+      animation: fadeInUp 0.8s ease-out 0.3s both;
+    }
+
+    /* ── CTA Button ── */
+    .btn {
+      display: inline-block;
+      background: linear-gradient(135deg, var(--acc), var(--acc2));
+      color: #050d1f;
+      text-decoration: none;
+      font-family: 'Space Grotesk', 'Inter', sans-serif;
+      font-weight: 700;
+      font-size: 16px;
+      padding: 14px 28px;
+      border-radius: 12px;
+      transition: transform 0.25s, box-shadow 0.25s;
+      box-shadow: 0 4px 24px var(--glow);
+      animation: pulse 3s ease-in-out infinite;
+    }
+
+    .btn:hover {
+      transform: translateY(-2px) scale(1.03);
+      box-shadow: 0 8px 40px rgba(110, 168, 254, 0.4);
+    }
+
+    /* ── Grid ── */
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+    }
+
+    /* ── Glass cards ── */
+    .card {
+      background: var(--card);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid var(--card-border);
+      border-radius: 16px;
+      padding: 24px;
+      transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 40px rgba(110, 168, 254, 0.1);
+      border-color: rgba(110, 168, 254, 0.25);
+    }
+
+    .card p { margin-bottom: 12px; }
+
+    /* ── Service cards ── */
+    .card-icon {
+      font-size: 32px;
+      margin-bottom: 12px;
+      display: block;
+    }
+
+    .price {
+      display: inline-block;
+      font-family: 'Space Grotesk', 'Inter', sans-serif;
+      font-size: 26px;
+      font-weight: 700;
+      background: linear-gradient(135deg, var(--acc), var(--acc2));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-top: 4px;
+    }
+
+    /* ── Demo projects ── */
+    .demo-panel {
+      border-radius: 12px;
+      padding: 20px;
+      margin-bottom: 16px;
+      background: linear-gradient(135deg, rgba(110, 168, 254, 0.08), rgba(167, 139, 250, 0.08));
+      border: 1px solid rgba(110, 168, 254, 0.1);
+      font-size: 14px;
+      color: var(--muted);
+      font-weight: 500;
+      line-height: 1.6;
+    }
+
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 14px;
+    }
+
+    .tag {
+      display: inline-block;
+      font-size: 12px;
+      font-weight: 600;
+      padding: 4px 10px;
+      border-radius: 20px;
+      background: rgba(110, 168, 254, 0.1);
+      color: var(--acc);
+      border: 1px solid rgba(110, 168, 254, 0.15);
+    }
+
+    .demo-list {
+      list-style: none;
+      margin-top: 12px;
+      padding: 0;
+    }
+
+    .demo-list li {
+      position: relative;
+      padding-left: 20px;
+      color: var(--muted);
+      font-size: 14px;
+      margin-bottom: 6px;
+      line-height: 1.6;
+    }
+
+    .demo-list li::before {
+      content: '›';
+      position: absolute;
+      left: 4px;
+      color: var(--acc);
+      font-weight: 700;
+    }
+
+    /* ── Why work with me ── */
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 16px;
+    }
+
+    .feature-card {
+      background: var(--card);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid var(--card-border);
+      border-radius: 14px;
+      padding: 22px;
+      text-align: center;
+      transition: transform 0.3s ease, border-color 0.3s ease;
+    }
+
+    .feature-card:hover {
+      transform: translateY(-3px);
+      border-color: rgba(110, 168, 254, 0.25);
+    }
+
+    .feature-icon {
+      font-size: 28px;
+      margin-bottom: 10px;
+      display: block;
+    }
+
+    .feature-card h3 {
+      font-size: 15px;
+      font-weight: 600;
+      margin: 0;
+    }
+
+    /* ── Contact ── */
+    .contact-card {
+      background: var(--card);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid var(--card-border);
+      border-radius: 16px;
+      padding: 32px;
+      max-width: 480px;
+    }
+
+    .contact-row {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 16px;
+      font-size: 16px;
+    }
+
+    .contact-row:last-child { margin-bottom: 0; }
+
+    .contact-row .icon { font-size: 20px; flex-shrink: 0; }
+
+    .contact-row a {
+      color: var(--acc);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .contact-row a:hover { color: #a0c8ff; }
+
+    .availability {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin-top: 20px;
+      font-size: 14px;
+      color: #6ee7a0;
+      font-weight: 500;
+    }
+
+    .availability::before {
+      content: '';
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #6ee7a0;
+      animation: blink 2s ease-in-out infinite;
+    }
+
+    /* ── Footer ── */
+    .footer {
+      margin-top: 80px;
+      padding: 24px 0;
+      border-top: 1px solid rgba(100, 140, 255, 0.1);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
+      font-size: 14px;
+      color: var(--muted);
+    }
+
+    .footer a {
+      color: var(--muted);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .footer a:hover { color: var(--acc); }
+
+    /* ── Animations ── */
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(24px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes pulse {
+      0%, 100% { box-shadow: 0 4px 24px var(--glow); }
+      50%      { box-shadow: 0 4px 32px rgba(110, 168, 254, 0.35); }
+    }
+
+    @keyframes blink {
+      0%, 100% { opacity: 1; }
+      50%      { opacity: 0.4; }
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.7s ease-out, transform 0.7s ease-out;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ── Responsive ── */
+    @media (max-width: 640px) {
+      .hero { padding: 72px 0 24px; }
+      section { margin-top: 56px; }
+      h2 { font-size: 24px; }
+      .grid { grid-template-columns: 1fr; }
+      .features-grid { grid-template-columns: repeat(2, 1fr); }
+      .btn { padding: 14px 24px; font-size: 15px; width: 100%; text-align: center; }
+      .footer { flex-direction: column; text-align: center; }
+      .contact-card { padding: 24px; }
+    }
   </style>
 </head>
 <body>
   <main class="wrap">
+
+    <!-- Hero -->
     <section class="hero">
       <h1>Eltun Web Studio</h1>
-      <p>Fast, modern websites for small businesses.</p>
+      <p class="tagline">I design and build fast, modern websites that help small businesses grow online and convert visitors into customers.</p>
       <a class="btn" href="#contact">Get a Free Homepage Mockup</a>
     </section>
 
-    <section>
+    <!-- Services -->
+    <section class="reveal">
       <h2>Services</h2>
       <div class="grid">
         <article class="card">
+          <span class="card-icon">🚀</span>
           <h3>Landing Page</h3>
-          <p>1 page • mobile responsive • contact form</p>
-          <strong>$120</strong>
+          <p>1 page · mobile responsive · contact form</p>
+          <span class="price">$120</span>
         </article>
         <article class="card">
+          <span class="card-icon">💼</span>
           <h3>Business Website</h3>
-          <p>Up to 5 pages • WhatsApp button • SEO basics</p>
-          <strong>$250</strong>
+          <p>Up to 5 pages · WhatsApp button · SEO basics</p>
+          <span class="price">$250</span>
         </article>
         <article class="card">
+          <span class="card-icon">⚡</span>
           <h3>Pro Website</h3>
-          <p>Up to 8 pages • integrations • speed optimization</p>
-          <strong>$450</strong>
+          <p>Up to 8 pages · integrations · speed optimization</p>
+          <span class="price">$450</span>
         </article>
       </div>
     </section>
 
-    <section>
+    <!-- Demo Projects -->
+    <section class="reveal">
       <h2>Demo Projects</h2>
       <div class="grid">
         <article class="card">
-          <h3>Clinic Landing Page Concept</h3>
-          <div class="demo">Hero + Services + Doctor Profiles + Booking CTA</div>
-          <ul>
-            <li>Goal: increase appointment bookings</li>
-            <li>Core sections: treatments, trust badges, FAQ</li>
-            <li>Conversion element: sticky "Book Now" button</li>
+          <h3>Clinic Landing Page</h3>
+          <div class="demo-panel">
+            Hero · Services · Doctor Profiles · Booking CTA
+          </div>
+          <ul class="demo-list">
+            <li>Increase appointment bookings</li>
+            <li>Treatments, trust badges, FAQ sections</li>
+            <li>Sticky "Book Now" conversion button</li>
           </ul>
+          <div class="tags">
+            <span class="tag">Healthcare</span>
+            <span class="tag">Booking</span>
+            <span class="tag">Responsive</span>
+          </div>
         </article>
         <article class="card">
-          <h3>Cafe Website Concept</h3>
-          <div class="demo">Menu Highlights + Gallery + Location + Reserve CTA</div>
-          <ul>
-            <li>Goal: drive reservations and walk-ins</li>
-            <li>Core sections: featured menu, testimonials, map</li>
-            <li>Conversion element: one-tap WhatsApp reservation</li>
+          <h3>Cafe Website</h3>
+          <div class="demo-panel">
+            Menu Highlights · Gallery · Location · Reserve CTA
+          </div>
+          <ul class="demo-list">
+            <li>Drive reservations and walk-ins</li>
+            <li>Featured menu, testimonials, map</li>
+            <li>One-tap WhatsApp reservation</li>
           </ul>
+          <div class="tags">
+            <span class="tag">Restaurant</span>
+            <span class="tag">WhatsApp</span>
+            <span class="tag">Gallery</span>
+          </div>
         </article>
       </div>
     </section>
 
-    <section>
-      <h2>Why work with me</h2>
-      <ul>
-        <li>First draft in 24 hours</li>
-        <li>Mobile-first design</li>
-        <li>Clear communication</li>
-        <li>2 revision rounds</li>
-      </ul>
+    <!-- Why Work With Me -->
+    <section class="reveal">
+      <h2>Why Work With Me</h2>
+      <div class="features-grid">
+        <div class="feature-card">
+          <span class="feature-icon">⏱</span>
+          <h3>First draft in 24 hours</h3>
+        </div>
+        <div class="feature-card">
+          <span class="feature-icon">📱</span>
+          <h3>Mobile-first design</h3>
+        </div>
+        <div class="feature-card">
+          <span class="feature-icon">💬</span>
+          <h3>Clear communication</h3>
+        </div>
+        <div class="feature-card">
+          <span class="feature-icon">🔄</span>
+          <h3>2 revision rounds</h3>
+        </div>
+      </div>
     </section>
 
-    <section id="contact">
+    <!-- Contact -->
+    <section id="contact" class="reveal">
       <h2>Contact</h2>
-      <div class="card">
-        <p><strong>Telegram:</strong> @Jupiter20365</p>
-        <p><strong>Email:</strong> eltunrahimli@gmail.com</p>
+      <div class="contact-card">
+        <div class="contact-row">
+          <span class="icon">✈️</span>
+          <span><strong>Telegram:</strong> <a href="https://t.me/Jupiter20365" target="_blank" rel="noopener">@Jupiter20365</a></span>
+        </div>
+        <div class="contact-row">
+          <span class="icon">✉️</span>
+          <span><strong>Email:</strong> <a href="mailto:eltunrahimli@gmail.com">eltunrahimli@gmail.com</a></span>
+        </div>
+        <div class="availability">Available for new projects this week</div>
       </div>
-      <p class="footer">Available for new projects this week.</p>
     </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <span>&copy; 2026 Eltun Web Studio</span>
+      <span>
+        <a href="https://t.me/Jupiter20365" target="_blank" rel="noopener">Telegram</a>
+        &nbsp;·&nbsp;
+        <a href="mailto:eltunrahimli@gmail.com">Email</a>
+      </span>
+    </footer>
+
   </main>
+
+  <script>
+    // Scroll-reveal observer
+    const revealEls = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.classList.add('visible');
+          observer.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.15 });
+    revealEls.forEach(el => observer.observe(el));
+  </script>
 </body>
 </html>
